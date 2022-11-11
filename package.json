@@ -84,7 +84,8 @@
 		"@typescript-eslint/parser": "^4.28.3",
 		"eslint": "^7.30.0",
 		"glob": "^7.1.7",
-		"typescript": "^3.9.10"
+		"typescript": "^3.9.10",
+		"vsce": "^2.14.0"
 	},
 	"dependencies": {
 		"chokidar": "^3.5.2",

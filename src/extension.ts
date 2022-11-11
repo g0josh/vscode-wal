@@ -69,32 +69,6 @@ function generateColorThemes() {
 										 .toString()
 										 .split(/\s+/, 16)
 			.map(hex => Color(hex));
-		
-		if (fs.existsSync(walColorsJsonPath)) {
-			type WalJson = {
-				special: {
-					background: string,
-					foreground: string
-				}
-			};
-
-			let colorsJson: WalJson;
-			const colorsRaw = fs.readFileSync(walColorsJsonPath).toString();
-
-			try {
-				colorsJson = JSON.parse(colorsRaw);
-			} catch {
-				// The wallpaper path on Windows can cause JSON.parse errors since the
-				// path isn't properly escaped.
-				colorsJson = JSON.parse(colorsRaw
-					.split('\n')
-					.filter((line) => !line.includes('wallpaper'))
-					.join('\n'));
-			}
-
-			colors[0] = Color(colorsJson?.special?.background);
-			colors[7] = Color(colorsJson?.special?.foreground);
-		}
 	} catch(error) {
 		// Not a complete failure if we have colors from the wal colors file, but failed to load from the colors.json
 		if (colors === undefined || colors.length === 0) {
